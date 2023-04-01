@@ -7,7 +7,7 @@ const InputLink = ({ setInputValue }) => {
     setValue("");
   };
   return (
-    <div>
+    <div className="mt-8 lg:mt-0">
       <p className="font-[400] text-[2rem] lg:text-[5rem]">
         {" "}
         Shortify My <span className="text-[#ffb83a]"> URL( )</span>
