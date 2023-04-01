@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="h-[95%] w-[90%] lg:h-[75%] mt-8 lg:mt-0 lg:w-[60%] text-center">
+      <div className="h-[95%] w-[90%] lg:h-[75%] mt-[4rem] lg:mt-0 lg:w-[60%] text-center">
         <InputLink setInputValue={setInputValue} />
         <CutLine />
         <ResultLink inputValue={inputValue} />
