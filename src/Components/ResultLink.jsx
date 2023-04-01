@@ -1,10 +1,14 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
 const ResultLink = ({ inputValue }) => {
-  console.log(inputValue);
-  const [shortifyLink, setShortifyLink] = useState("wwww.sswdw.reref");
+  // console.log(inputValue);
+  const [shortifyLink, setShortifyLink] = useState("");
   const [copied, setCopied] = useState(false);
+  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(false);
+  const url = `https://api.shrtco.de/v2/shorten?url=${inputValue}`;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -14,6 +18,32 @@ const ResultLink = ({ inputValue }) => {
       clearTimeout(timer);
     };
   }, [copied]);
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const res = await axios(url);
+      setShortifyLink(res.data.result.full_short_link);
+      // console.log(shortifyLink);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // if (loading) {
+  //   return <p>Loading....</p>;
+  // }
+  // if (error) {
+  //   return <p>Something went Wrong</p>;
+  // }
+
+  useEffect(() => {
+    if (inputValue.length) {
+      fetchData();
+    }
+  }, [inputValue]);
 
   return (
     <div className=" lg:mt-6 flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-0">
@@ -33,7 +63,7 @@ const ResultLink = ({ inputValue }) => {
               : "w-[100%] lg:p-2 lg:w-[4.5rem] ] bg-[#ffb83a] text-[white] rounded-[0.45rem] p-1"
           }
         >
-          Copy
+          {copied ? "Copied" : "Copy"}
         </button>
       </CopyToClipboard>
     </div>
