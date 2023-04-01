@@ -46,7 +46,7 @@ const ResultLink = ({ inputValue }) => {
   }, [inputValue]);
 
   return (
-    <div className=" lg:mt-6 flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-0">
+    <div className="w-[100%] lg:mt-6 flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-0">
       <p className="w-[100%] lg:w-[60%] h-[2rem] flex">
         <span className="h-[2rem] w-[2rem] p-2 bg-[#ffb83a] rounded-l-[0.45rem]">
           <img className="w-[100%] h-[100%]" src="/image/copyy.png" />
