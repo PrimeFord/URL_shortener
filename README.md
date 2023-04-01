@@ -28,6 +28,8 @@ Clone or download this repository and run with a local server of open `index.htm
 
 ![screenshot](./public/image/snip.png)
 
+![screenshot](./public/image/snip2.png)
+
 ## Contact
 
 If you want to contact me you can reach me at
