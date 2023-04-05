@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import Load from "./Load";
 
-const InputLink = ({ setInputValue }) => {
+const InputLink = ({ setInputValue, error }) => {
   const [value, setValue] = useState("");
   const [load, setLoad] = useState(false);
+  const [empty, setEmpty] = useState("");
 
   const shortify = (e) => {
     e.preventDefault();
+
+    console.log(value);
     setInputValue(value);
+    if (value.trim().length !== 0) {
+      setEmpty("");
+      console.log("not");
+    } else {
+      setEmpty("Please enter an address in this field");
+      console.log("empty");
+    }
     setLoad(true);
   };
   return (
@@ -29,6 +39,7 @@ const InputLink = ({ setInputValue }) => {
             className="w-[100%] lg:w-[85%] p-2 rounded-r-[0.45rem]"
             type="text"
             placeholder="paste link or URL here..."
+            // required
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
@@ -37,6 +48,8 @@ const InputLink = ({ setInputValue }) => {
           Shortify
         </button>
       </form>
+      <p className="text-[#f53434f1] lg:text-left lg:ml-[10rem]">{empty}</p>
+      <p className="text-[#f53434f1] lg:text-left lg:ml-[10rem]">{error}</p>
     </div>
   );
 };

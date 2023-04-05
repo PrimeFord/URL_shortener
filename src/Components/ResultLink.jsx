@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import Load from "./Load";
 
-const ResultLink = ({ inputValue }) => {
+const ResultLink = ({ inputValue, setError }) => {
   // console.log(inputValue);
   const [shortifyLink, setShortifyLink] = useState("");
   const [copied, setCopied] = useState(false);
@@ -25,9 +25,15 @@ const ResultLink = ({ inputValue }) => {
       setLoading(true);
       const res = await axios(url);
       setShortifyLink(res.data.result.full_short_link);
+      // if (res.data.ok === false) {
+      //   setError(res.data.error);
+      //   console.log(res.data);
+      //   console.log(res.data.ok.error);
+      // }
       // console.log(shortifyLink);
     } catch (error) {
       console.log(error);
+      setError(error.response.data.error.slice(0, 23));
     } finally {
       setLoading(false);
     }

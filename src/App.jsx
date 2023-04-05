@@ -8,13 +8,14 @@ import Instruction from "./Components/Instruction";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
+  const [error, setError] = useState("");
 
   return (
     <div className="App">
       <div className="h-[95%] w-[90%] lg:h-[75%] mt-[4rem] lg:mt-0 lg:w-[60%] flex flex-col items-center text-center">
-        <InputLink setInputValue={setInputValue} />
+        <InputLink setInputValue={setInputValue} error={error} />
         <CutLine />
-        <ResultLink inputValue={inputValue} />
+        <ResultLink inputValue={inputValue} setError={setError} />
         <Instruction />
       </div>
     </div>
