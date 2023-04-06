@@ -25,6 +25,7 @@ const ResultLink = ({ inputValue, setError }) => {
       setLoading(true);
       const res = await axios(url);
       setShortifyLink(res.data.result.full_short_link);
+      setError("");
       // if (res.data.ok === false) {
       //   setError(res.data.error);
       //   console.log(res.data);
